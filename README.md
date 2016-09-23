@@ -4,4 +4,6 @@
 
 La aplicación inicializa una configuración de turnos estándar a partir de los usuarios configuradas, y mediante el interfaz de administración se tiene la opción de que los usuarios puedan hacer cambios de turnos, quedando además registrados dichos movimientos.
 
+**django-shift** provee de un sencillo API de consulta de la asignación de usuario para la semana en curso y para la siguiente, consultable sin autenticación.
+
 Diseñado con Django y Python 3.
