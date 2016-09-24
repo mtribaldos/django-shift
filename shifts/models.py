@@ -33,6 +33,11 @@ class Shifts(models.Model):
         return str(self.week)
 
     @classmethod
+    def onduty_person_name(cls, week):
+       onduty = cls.objects.get(week=week)
+       return onduty.user.first_name
+
+    @classmethod
     def assign(cls):
         staff = Staff.objects.all()
         count = staff.count()

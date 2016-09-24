@@ -1,14 +1,17 @@
 # -*- encoding: utf-8 -*-
 
 from django.http import HttpResponse
-import datetime
 from .models import Shifts
+from .utils import current_year_week
 
 
-def staff_today(request):
-    week = datetime.datetime.now().date().isocalendar()[1]
-    text = Shifts.objects.get(week=week)
-    return HttpResponse(text.user.first_name)
+def onduty_today(request):
+    week = current_year_week()
+    return HttpResponse(Shifts.onduty_person_name(week))
+
+def onduty_next_week(request):
+    week = current_year_week() + 1
+    return HttpResponse(Shifts.onduty_person_name(week))
 
 def reset(request):
     Shifts.assign()
