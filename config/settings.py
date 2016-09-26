@@ -126,3 +126,4 @@ STATIC_URL = '/static/'
 # EDIT HERE ##
 SHIFT_GROUP_NAME = 'Guardias'
 SHIFT_USER_OFFSET = 0
+LOGIN_REDIRECT_URL = "/today"
