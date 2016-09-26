@@ -3,16 +3,11 @@
 from __future__ import unicode_literals
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.db import models
-from django.conf import settings
-from .utils import year_week
+from .managers import StaffManager, ShiftsManager
 
 
-class StaffManager(models.Manager):
-    def get_queryset(self):
-        guard_group = Group.objects.filter(name = settings.SHIFT_GROUP_NAME)
-        return super(StaffManager, self).get_queryset().filter(groups__in=guard_group)
 
 @python_2_unicode_compatible
 class Staff(User):
@@ -27,34 +22,15 @@ class Staff(User):
 
 @python_2_unicode_compatible
 class Shifts(models.Model):
+    objects = ShiftsManager()
+
     week = models.IntegerField(primary_key=True)
     user = models.ForeignKey(Staff)
 
     def __str__(self):
         return str(self.week)
 
-    @classmethod
-    def onduty_person_name(cls, week):
-       onduty = cls.objects.get(week=week)
-       return onduty.user.first_name
-
-    @classmethod
-    def swap(cls, first_date, second_date):
-       onduty_first_date = cls.objects.get(week=year_week(first_date))
-       onduty_second_date = cls.objects.get(week=year_week(second_date))
-       onduty_first_date.user, onduty_second_date.user = onduty_second_date.user, onduty_first_date.user
-       onduty_first_date.save()
-       onduty_second_date.save()
-
-    @classmethod
-    def assign(cls):
-        staff = Staff.objects.all()
-        count = staff.count()
-
-        for i in range(1, 54):
-            shift = cls(week=i, user=staff[i % count])
-            shift.save()
-
     class Meta:
+        #proxy = True
         verbose_name = _('shift')
         verbose_name_plural = _('shifts')
