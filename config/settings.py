@@ -123,7 +123,10 @@ STATIC_URL = '/static/'
 
 
 # Shift app setup
+import datetime
+
 # EDIT HERE ##
 SHIFT_GROUP_NAME = 'Guardias'
-SHIFT_USER_OFFSET = 0
+SHIFT_CARDINALITY = 5000
+ANCHOR_DATE = datetime.date(2016, 1, 1)
 LOGIN_REDIRECT_URL = "/today"
