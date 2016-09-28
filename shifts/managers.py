@@ -23,6 +23,7 @@ class ShiftsManager(models.Manager):
        onduty_first_date.user, onduty_second_date.user = onduty_second_date.user, onduty_first_date.user
        onduty_first_date.save()
        onduty_second_date.save()
+       return onduty_first_date, onduty_second_date
 
     def reset(self):
         from .models import Staff 

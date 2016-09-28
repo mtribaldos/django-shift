@@ -2,6 +2,8 @@
 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.contrib.admin.models import LogEntry, CHANGE
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Shifts
@@ -27,8 +29,23 @@ def shift_change(request):
     if request.method == 'POST':
         form = ShiftChangeForm(request.POST)
         if form.is_valid():
-            Shifts.objects.swap(form.cleaned_data.get('first_date'),
-                                form.cleaned_data.get('second_date'))
+            first_date, second_date = Shifts.objects.swap(form.cleaned_data.get('first_date'),
+                                                          form.cleaned_data.get('second_date'))
+            LogEntry.objects.log_action(
+                user_id         = request.user.pk,
+                content_type_id = ContentType.objects.get_for_model(first_date).pk,
+                object_id       = first_date.week,
+                object_repr     = 'shift_change',
+                action_flag     = CHANGE,
+                change_message  = "You have switch between week %i and %i" % (first_date.week, second_date.week))
+            LogEntry.objects.log_action(
+                user_id         = request.user.pk,
+                content_type_id = ContentType.objects.get_for_model(second_date).pk,
+                object_id       = second_date.week,
+                object_repr     = 'shift_change',
+                action_flag     = CHANGE,
+                change_message  = "You have switch between week %i and %i" % (second_date.week, first_date.week))
+
             return HttpResponseRedirect('/')
     else:
         form = ShiftChangeForm()
