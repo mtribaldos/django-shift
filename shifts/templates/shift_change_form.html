@@ -1,15 +1,27 @@
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<script>
-$(document).ready(function() {
-    $('.datepicker').datepicker();
-});
-</script>
+{% load static %}
+{% load bootstrap %}
 
-<form action="/shift_change/" method="post">
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker3.standalone.min.css' %}">
+    <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+           $('.datepicker').datepicker();
+       });
+    </script>
+</head>
+
+<form action="/shift_change/" method="post" role="form">
+    <legend>Intercambio de turno de guardia</legend>
     {% csrf_token %}
-    <h1>Intercambio de turno de guardia</h1>
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
+    {{ form|bootstrap }}
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
 </form>
