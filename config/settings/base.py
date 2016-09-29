@@ -198,6 +198,6 @@ import datetime
 
 # EDIT HERE ##
 SHIFT_GROUP_NAME = 'Guardias'
-SHIFT_CARDINALITY = 5000
+SHIFT_CARDINALITY = 1000
 ANCHOR_DATE = datetime.date(2016, 1, 1)
 LOGIN_REDIRECT_URL = "/today"
