@@ -6,7 +6,7 @@ from bootstrap_datepicker.widgets import DatePicker
 
 class ShiftChangeForm(forms.Form):
     options = { 
-        "format": "mm/dd/yyyy",
+        "format": "dd/mm/yyyy",
         "autoclose": True,
         "weekStart": 1,
         "calendarWeeks": True,
