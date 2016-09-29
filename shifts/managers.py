@@ -31,5 +31,5 @@ class ShiftsManager(models.Manager):
         count = staff.count()
 
         for i in range(1, settings.SHIFT_CARDINALITY):
-            shift, _ = self.update_or_create(week = i, defaults = { 'user': staff[i % count] })
+            shift, _ = self.update_or_create(week = i, defaults = { 'user': staff[(i + settings.SHIFT_OFFSET) % count] })
 
