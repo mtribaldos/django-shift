@@ -4,8 +4,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-<p>
-<form action="{% url 'login' %}" method="post" accept-charset="utf-8" class="form-vertical">
+<div class="container">
+    <h2>Autenticación</h2>
+    <form action="{% url 'login' %}" method="post" accept-charset="utf-8" class="form-vertical">
     {% csrf_token %}
     {% for field in form %}
         <p>
@@ -16,6 +17,7 @@
     {% endfor %}
     <p>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>
 </form>
+</div>

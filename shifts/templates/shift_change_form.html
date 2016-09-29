@@ -17,11 +17,13 @@
     </script>
 </head>
 
-<form action="/shift_change/" method="post" role="form">
-    <legend>Intercambio de turno de guardia</legend>
-    {% csrf_token %}
-    {{ form|bootstrap }}
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Save changes</button>
-    </div>
-</form>
+<div class="container">
+    <h2>Conmutación de turnos</h2>
+    <form action="/shift_change/" method="post" role="form">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </div>
+    </form>
+</div>

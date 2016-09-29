@@ -16,7 +16,9 @@ class ShiftChangeForm(forms.Form):
         "language": "es" }
 
     first_date = forms.DateField(
-        widget=DatePicker(options = options))
+        widget=DatePicker(options = options),
+        label='Primera fecha')
     second_date = forms.DateField(
-        widget=DatePicker(options = options))
+        widget=DatePicker(options = options),
+        label='Segunda fecha')
 
