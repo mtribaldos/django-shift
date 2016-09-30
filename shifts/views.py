@@ -59,3 +59,9 @@ def shift_change(request):
         form = ShiftChangeForm()
 
     return render(request, 'shift_change_form.html', {'form': form})
+
+
+@login_required(login_url='/login/')
+def change_password(request):
+    return HttpResponseRedirect('/admin/password_change/')    
+
