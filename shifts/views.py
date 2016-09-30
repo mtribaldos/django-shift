@@ -12,10 +12,6 @@ from .utils import current_year_week
 
 
 
-def landing_page(request):
-    return render(request, 'landing_page.html')
-
-
 def onduty_current_week(request):
     week = current_year_week()
     return HttpResponse(Shifts.objects.onduty_person_name(week))

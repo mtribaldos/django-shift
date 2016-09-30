@@ -2,7 +2,7 @@
 """
 from django.contrib.auth.views import login, logout
 from django.conf.urls import url
-from django.views.generic import RedirectView
+from django.views.generic import TemplateView, RedirectView
 from django.contrib import admin
 from shifts import views
 
@@ -16,5 +16,5 @@ urlpatterns = [
     url(r'^next_week/', views.onduty_next_week),
     url(r'^reset/', views.reset),
     url(r'^switch_shifts/', views.shift_change),
-    url(r'^$', views.landing_page),
+    url(r'^$', TemplateView.as_view(template_name='landing_page.html'), name="landing_page"),
 ]
