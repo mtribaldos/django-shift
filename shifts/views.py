@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.admin.models import LogEntry, CHANGE
 from django.contrib.contenttypes.models import ContentType
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Shifts
 from .forms import ShiftChangeForm
@@ -29,7 +29,7 @@ def reset(request):
 
 
 @login_required(login_url='/login/')
-def shift_change(request):
+def switch_shifts(request):
     if request.method == 'POST':
         form = ShiftChangeForm(request.POST)
         if form.is_valid():
@@ -39,22 +39,22 @@ def shift_change(request):
                 user_id         = request.user.pk,
                 content_type_id = ContentType.objects.get_for_model(first_date).pk,
                 object_id       = first_date.week,
-                object_repr     = 'shift_change',
+                object_repr     = 'switch_shifts',
                 action_flag     = CHANGE,
-                change_message  = "You have switch between week %i and %i" % (first_date.week, second_date.week))
+                change_message  = "You have switched between week %i and %i" % (first_date.week, second_date.week))
             LogEntry.objects.log_action(
                 user_id         = request.user.pk,
                 content_type_id = ContentType.objects.get_for_model(second_date).pk,
                 object_id       = second_date.week,
-                object_repr     = 'shift_change',
+                object_repr     = 'switch_shifts',
                 action_flag     = CHANGE,
-                change_message  = "You have switch between week %i and %i" % (second_date.week, first_date.week))
+                change_message  = "You have switched between week %i and %i" % (second_date.week, first_date.week))
 
-            return HttpResponseRedirect('/')
+            return redirect('shifts:landing_page')
     else:
         form = ShiftChangeForm()
 
-    return render(request, 'shift_change_form.html', {'form': form})
+    return render(request, 'switch_shifts_form.html', {'form': form})
 
 
 @login_required(login_url='/login/')

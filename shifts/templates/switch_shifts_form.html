@@ -20,7 +20,7 @@
 
 <div class="container">
     <h2>Conmutación de turnos</h2>
-    <form action="/shift_change/" method="post" role="form">
+    <form action="{% url 'shifts:switch_shifts' %}" method="post" role="form">
         {% csrf_token %}
         {{ form|bootstrap }}
         <div class="form-group">
