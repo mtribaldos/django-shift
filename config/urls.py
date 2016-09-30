@@ -15,5 +15,5 @@ urlpatterns = [
     url(r'^next_week/', views.onduty_next_week),
     url(r'^reset/', views.reset),
     url(r'^switch_shifts/', views.shift_change),
-    url(r'^$', RedirectView.as_view(url='/current_week')),
+    url(r'^$', views.landing_page),
 ]

@@ -11,18 +11,26 @@ from .forms import ShiftChangeForm
 from .utils import current_year_week
 
 
+
+def landing_page(request):
+    return render(request, 'landing_page.html')
+
+
 def onduty_current_week(request):
     week = current_year_week()
     return HttpResponse(Shifts.objects.onduty_person_name(week))
+
 
 def onduty_next_week(request):
     week = current_year_week() + 1
     return HttpResponse(Shifts.objects.onduty_person_name(week))
 
+
 @login_required(login_url='/login/')
 def reset(request):
     Shifts.objects.reset()
     return HttpResponse("La asignación de guardias ha sido reseteada")
+
 
 @login_required(login_url='/login/')
 def shift_change(request):

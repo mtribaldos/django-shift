@@ -1,0 +1,24 @@
+{% load bootstrap %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+<h1>medip-shifts</h1>
+<p>Las operaciones de consulta que se proporcionan son:</p>
+<div class="list-group">
+  <a href="/current_week" class="list-group-item list-group-item-action list-group-item-success"><div class="pull-left"><b>/current_week</b></div><div class="pull-right">Obtiene la persona asignada al turno durante la semana actual</div><div class="clearfix"></div></a>
+  <a href="/next_week" class="list-group-item list-group-item-action list-group-item-success"><div class="pull-left"><b>/next_week</b></div><div class="pull-right">Obtiene la persona asignada al turno durante la próxima semana</div><div class="clearfix"></div></a>
+</div>
+<p>Para las operaciones relacionadas con la sesión existen:</p>
+<div class="list-group">                                                                                            
+    <a href="/login" class="list-group-item list-group-item-action list-group-item-info"><div class="pull-left"><b>/login</b></div><div class="pull-right">Inicia una sesión autenticada con un usuario</div><div class="clearfix"></div></a>
+    <a href="/logout" class="list-group-item list-group-item-action list-group-item-info"><div class="pull-left"><b>/logout</b></div><div class="pull-right">Cierra la sesión autenticada con un usuario</div><div class="clearfix"></div></a>
+</div>
+<p>Las operaciones que modifican el estado de los turnos son:</p>
+<div class="list-group">
+    <a href="/switch_shifts" class="list-group-item list-group-item-action list-group-item-warning"><div class="pull-left"><b>/switch_shifts</b></div><div class="pull-right">Posibilita el intercambio de turnos entre dos fechas (necesita autenticación)</div><div class="clearfix"></div></a>
+    <a href="/reset" class="list-group-item list-group-item-action list-group-item-danger"><div class="pull-left"><b>/reset</b></div><div class="pull-right">Regenera los turnos iniciales (necesita autenticación). ATENCIÓN: Esta operación es irreversible</div><div class="clearfix"></div></a>
+</div> 
+</div>
