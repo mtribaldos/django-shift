@@ -6,7 +6,11 @@
 
 <div class="container">
     <h2>Autenticación</h2>
-    <form action="{% url 'login' %}" method="post" accept-charset="utf-8" class="form-vertical">
+    {% if next %}
+    <form action="/login/?next={{next}}" method="post" accept-charset="utf-8" class="form-vertical">
+    {% else %}
+    <form action="/login/" method="post" accept-charset="utf-8" class="form-vertical" >
+    {% endif %}
     {% csrf_token %}
     {% for field in form %}
         <p>
