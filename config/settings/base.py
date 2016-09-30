@@ -105,7 +105,6 @@ ROOT_URLCONF = '%s.urls' % SITE_NAME
 # ------------------------------------------------------------------------------
 DJANGO_APPS = (
     # Default Django apps:
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -118,6 +117,7 @@ DJANGO_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'shifts',
+    'django.contrib.admin'
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
