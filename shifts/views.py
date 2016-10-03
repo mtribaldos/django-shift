@@ -22,6 +22,11 @@ def onduty_next_week(request):
     return HttpResponse(Shifts.objects.onduty_person_name(week))
 
 
+def onduty_previous_week(request):
+    week = current_year_week() - 1 
+    return HttpResponse(Shifts.objects.onduty_person_name(week))
+
+
 @login_required(login_url='/login/')
 def reset(request):
     Shifts.objects.reset()

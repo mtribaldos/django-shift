@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^current/', views.onduty_current_week, name="current_week"), 
     url(r'^today/', RedirectView.as_view(url='/current')),
     url(r'^next/', views.onduty_next_week, name="next_week"),
+    url(r'^previous/', views.onduty_previous_week, name="previous_week"),
     url(r'^login/$', login, name="login"),
     url(r'^logout/$', logout, name="logout"),
     url(r'^change-password', views.change_password, name="change_password"),
