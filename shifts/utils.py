@@ -1,4 +1,4 @@
-import datetime
+import time, datetime
 from django.conf import settings
 
 
@@ -12,3 +12,5 @@ def current_year_week():
     today = datetime.datetime.now().date()
     return year_week(today)
 
+def first_date_of_year_week(week):
+    return datetime.datetime.fromtimestamp(time.mktime(time.strptime('2016 %i 1' % week, '%Y %W %w'))).date()

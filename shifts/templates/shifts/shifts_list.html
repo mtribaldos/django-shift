@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+{% block content %}
+    <h2>Listado de siguientes turnos</h2>
+    <ul class="list-group">
+        {% for shift in object_list %}
+            {% if user.get_username == shift.user.username %}
+                <li class="list-group-item list-group-item-action list-group-item-info">
+            {% else %}
+                <li class="list-group-item">
+            {% endif %}
+                <div class="pull-left">{{ shift.user.first_name }}</div>
+                <div class="pull-right">{{ shift.first_date_of_year_week }}</div>
+                <div class="clearfix"></div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+</div>
