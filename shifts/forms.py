@@ -12,6 +12,7 @@ class ShiftChangeForm(forms.Form):
         "calendarWeeks": True,
         "daysOfWeekHighlighted": [6, 0],
         "startDate": '01/01/2016',
+        "endDate": '31/12/2030',
         "todayHighlight": True,
         "language": "es" }
 
