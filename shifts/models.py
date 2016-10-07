@@ -8,6 +8,7 @@ from django.db import models
 from .managers import StaffManager, ShiftsManager
 from .utils import first_date_of_year_week
 
+
 @python_2_unicode_compatible
 class Staff(User):
     objects = StaffManager()
@@ -29,12 +30,10 @@ class Shifts(models.Model):
     @property
     def first_date_of_year_week(self):
         return first_date_of_year_week(self.week)
-        #return datetime.fromtimestamp(mktime(time.strptime('2016 %i 1' % self.week, '%Y %W %w'))).date()
 
     def __str__(self):
         return str(self.week)
 
     class Meta:
-        #proxy = True
         verbose_name = _('shift')
         verbose_name_plural = _('shifts')
