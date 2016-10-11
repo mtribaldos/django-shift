@@ -10,9 +10,14 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
-
-
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
+
+# EDIT HERE ##
+SHIFT_GROUP_NAME = 'Guardias'
+SHIFT_CARDINALITY = 1000
+SHIFT_OFFSET = 2
+ANCHOR_DATE = datetime.date(2016, 1, 1)
+LOGIN_REDIRECT_URL = "/"
 

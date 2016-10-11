@@ -196,9 +196,3 @@ STATICFILES_FINDERS = (
 # Shift app setup
 import datetime
 
-# EDIT HERE ##
-SHIFT_GROUP_NAME = 'Guardias'
-SHIFT_CARDINALITY = 1000
-SHIFT_OFFSET = 4
-ANCHOR_DATE = datetime.date(2016, 1, 1)
-LOGIN_REDIRECT_URL = "/"
