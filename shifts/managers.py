@@ -27,9 +27,9 @@ class ShiftsManager(models.Manager):
 
     def reset(self):
         from .models import Staff 
-        staff = Staff.objects.all()
-        count = staff.count()
+        count = len(settings.SHIFT_USERS)
 
         for i in range(1, settings.SHIFT_CARDINALITY):
-            shift, _ = self.update_or_create(week=i, defaults={'user': staff[(i + settings.SHIFT_OFFSET) % count]})
+            user = Staff.objects.get(username=settings.SHIFT_USERS[i % count])
+            shift, _ = self.update_or_create(week=i, defaults={'user': user})
 

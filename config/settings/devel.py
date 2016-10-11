@@ -18,7 +18,7 @@ DATABASES = {
 # EDIT HERE ##
 SHIFT_GROUP_NAME = 'Guardias'
 SHIFT_CARDINALITY = 1000
-SHIFT_OFFSET = 0
+SHIFT_USERS = ['mtribaldos', 'jorgecremades', 'mortega', 'dgalera', 'pacoma']
 ANCHOR_DATE = datetime.date(2016, 1, 1)
 LOGIN_REDIRECT_URL = "/"
 
