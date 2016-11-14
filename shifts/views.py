@@ -15,7 +15,7 @@ from .utils import current_year_week
 class ShiftsListView(ListView):
     model = Shifts
     week = current_year_week()
-    queryset = Shifts.objects.all()[week - 1:week + 9]
+    queryset = Shifts.objects.order_by('week')[week - 1:week + 9]
 
 
 def onduty_current_week(request):
