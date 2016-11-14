@@ -13,7 +13,7 @@
                 <li class="list-group-item">
             {% endif %}
                 <div class="pull-left">{{ shift.user.first_name }}</div>
-                <div class="pull-right">{{ shift.first_date_of_year_week }}</div>
+                <div class="pull-right">{{ shift.first_date_of_year_week|naturalday }}</div>
                 <div class="clearfix"></div>
             </li>
         {% endfor %}
