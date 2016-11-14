@@ -13,4 +13,4 @@ def current_year_week():
     return year_week(today)
 
 def first_date_of_year_week(week):
-    return settings.ANCHOR_DATE + datetime.timedelta(days=week*7)
+    return (settings.ANCHOR_DATE + datetime.timedelta(days=week*7)).date()
