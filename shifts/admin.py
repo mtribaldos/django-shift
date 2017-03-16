@@ -8,6 +8,7 @@ from django.contrib import admin
 from .models import Shifts
 
 
+@admin.register(Shifts)
 class ShiftsAdmin(admin.ModelAdmin):
     list_display = ['week_label', 'fullname']
     ordering = ('week',)
@@ -18,7 +19,5 @@ class ShiftsAdmin(admin.ModelAdmin):
     def fullname(self, obj):
         return "%s" % obj.user.first_name
     fullname.short_description = _("Full name")
-
-admin.site.register(Shifts, ShiftsAdmin)
 
 
