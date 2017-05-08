@@ -16,6 +16,7 @@ class ShiftChangeForm(forms.Form):
         "todayHighlight": True,
         "language": "es" }
 
-    date_picker_widget = DatePicker(options=options)
-    first_date = forms.DateField(widget=date_picker_widget, label='Primera fecha')
-    second_date = forms.DateField(widget=date_picker_widget, label='Segunda fecha')
+    first_date_picker_widget = DatePicker(options=options)
+    second_date_picker_widget = DatePicker(options=options)
+    first_date = forms.DateField(widget=first_date_picker_widget, label='Primera fecha')
+    second_date = forms.DateField(widget=second_date_picker_widget, label='Segunda fecha')
