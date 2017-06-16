@@ -1,9 +1,9 @@
 # django-shift
 
-**django-shift** proporciona una forma sencilla de asignar turnos semanales a una serie de usuarios pertenecientes a un determinado (configurable) grupo de usuarios de Django.
+**django-shift** provides a simple way to manage work week shifts among some pool a workers (employees).
 
-La aplicación inicializa una configuración de turnos estándar a partir de los usuarios configuradas, y mediante el interfaz de administración se tiene la opción de que los usuarios puedan hacer cambios de turnos, quedando además registrados dichos movimientos.
+The application creates an initial shift configuration from the registered users in the same Django user group. It allows shift swaps between employees (registering the swaps metainfo gets registered as well).
 
-**django-shift** provee de un sencillo API de consulta de la asignación de usuario para la semana en curso y para la siguiente, consultable sin autenticación.
+**django-shift** provides a simple API for querying the current week shift assignation, previous or next week.
 
-Diseñado con Django y Python 3.
+Designed with Django and Python 3.
